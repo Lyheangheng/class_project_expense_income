@@ -12,5 +12,14 @@
       "src": "/(.*)",
       "dest": "Application/wsgi.py"
     }
-  ]
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "Application.settings"
+  },
+  "build": {
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "Application.settings"
+    },
+    "command": "pip install -r requirements.txt && python manage.py migrate --noinput"
+  }
 }

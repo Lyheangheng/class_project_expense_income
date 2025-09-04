@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 style="text-align:center; animation: fadeInDown 1s;">Income List</h2>
+<div style="text-align:center; margin-bottom:2rem;">
+  <a href="{% url 'add_income' %}"><button style="width:180px; font-size:1.1rem; box-shadow:0 2px 16px #00e6d055;">Add Income</button></a>
+</div>
+<ul style="animation: fadeInUp 1s;">
+  {% for income in incomes %}
+    <li style="animation: fadeInUp 0.5s {{ forloop.counter0|add:'0.1' }}s both;">{{ income.date }} - <span style="color:#00e6d0;">${{ income.amount }}</span> - {{ income.description }}</li>
+  {% empty %}
+    <li>No income records.</li>
+  {% endfor %}
+</ul>
+<style>
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+{% endblock %}
